@@ -1,0 +1,10 @@
+const DatabaseContext = require('./strategy/database-context')
+const PostgresqlStrategy = require('./strategy/concrete/postgresql-strategy')
+const MysqlStrategy = require('./strategy/concrete/mysql-strategy')
+
+const context = new DatabaseContext()
+context.setDatabaseStrategy(new MysqlStrategy())
+context.create({})
+context.setDatabaseStrategy(new PostgresqlStrategy())
+context.create({})
+context.delete(1)
